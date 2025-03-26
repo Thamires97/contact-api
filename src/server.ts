@@ -1,10 +1,9 @@
 import fastify, { FastifyInstance } from "fastify";
+import { userRoutes } from "./routes/user.routes";
 
 const app: FastifyInstance = fastify();
 
-app.get("/", async (request, reply) => {
-  return { hello: "world" };
-});
+app.register(userRoutes, { prefix: "/users" });
 
 app.listen({ port: 3000 }, () => {
   console.log(`Server is running on http://localhost:3000`);

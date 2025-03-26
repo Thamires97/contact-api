@@ -2,10 +2,8 @@ export interface IUser {
   id: string;
   name: string;
   email: string;
-  // password: string;
-  // role: string;
-  // createdAt: Date;
-  // updatedAt: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface IUserCreate {
@@ -13,8 +11,9 @@ export interface IUserCreate {
   email: string;
 }
 
-export interface UserRepository {
+export interface IUserRepository {
   create(data: IUserCreate): Promise<IUser>;
+  findByEmail(email: string): Promise<IUser | null>;
 
   //   getAll(): Promise<IUser[]>;
   //   getOne(id: string): Promise<IUser>;
